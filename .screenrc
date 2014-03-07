@@ -1,0 +1,21 @@
+# estreak.com screen config
+# <F1> = scroll buff
+# <F2> = LEFT window
+# <F3> = RIGHT window
+
+startup_message off
+defscrollback 5000
+caption always
+
+caption string '%{rkW}%-w%{.bW}%n %t%{-}%+w'
+
+bindkey -k k2 prev
+bindkey -k k3 next
+bindkey -k k1 copy
+bind ^x quit
+bind k kill
+bind t title 
+vbell off
+
+screen 1
+screen 2
