@@ -1,0 +1,36 @@
+YUMMY STUFF:
+yum -y update
+yum install openssl-devel
+yum -y groupinstall "Development Tools"
+yum -y install screen
+yum -y install wget
+yum repolisty
+yum install vim
+yum install httpd
+yum install tcpdump
+
+USER STUFF:
+useradd coder
+passwd coder
+
+
+GIT STUFF:
+yum install git
+git config --global user.name "blah blah"
+git config --global user.email "blah@blah.com"
+
+
+DB STUFF:
+yum install redis
+npm install -g redis-commander
+service redis start
+chkconfig redis on
+redis-cli   (keys *, hgetall user:1, etc)
+
+
+NODEY STUFF:
+yum install npm --enablerepo=epel
+npm -g install bcrypt-nodejs
+npm install -g node-inspector
+npm -g install express supervisor
+
