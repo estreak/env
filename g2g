@@ -21,7 +21,12 @@ $ git config --global user.name "blah blah"
 $ git config --global user.email "blah@blah.com"
 $ git clone https://github.com/estreak/env.git
 $ git pull  // if added a file to the master
+$ git add newfile or edit an existing file
+$ git commit -m 'comment'
+$ git remote set-url origin https://<user>@github.com/<user>/<repo>.git
+$ git push origin master
 
+edit a file
 
 DB STUFF:
 $ yum install redis
