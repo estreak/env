@@ -1,5 +1,6 @@
 YUMMY STUFF:
 $ yum -y update
+$ yum install man -y
 $ yum install openssl-devel
 $ yum -y groupinstall "Development Tools"
 $ yum -y install screen
@@ -7,7 +8,9 @@ $ yum -y install wget
 $ yum install vim
 $ yum install tcpdump
 $ yum install httpd
-$ service httpd start
+
+
+
 
 USER STUFF:
 $ useradd coder
@@ -21,12 +24,35 @@ $ git config --global user.name "blah blah"
 $ git config --global user.email "blah@blah.com"
 $ git clone https://github.com/estreak/env.git
 $ git pull  // if added a file to the master
-$ git add newfile or edit an existing file
+$ git add newfile
+$ git add --all
 $ git commit -m 'comment'
 $ git remote set-url origin https://<user>@github.com/<user>/<repo>.git
 $ git push origin master
 
-edit a file
+AUTH STUFF:
+passport module for OAuth w/ Facebook, Twitter, Google, Github...
+https://github.com/jaredhanson/passport-twitter
+Make a twitter app: https://apps.twitter.com/
+
+JQUERY:
+wget http://code.jquery.com/jquery-1.11.0.js
+
+URIANCHOR:
+git clone https://github.com/mmikowski/urianchor.git
+
+JSLINT
+https://github.com/reid/node-jslint
+$ npm install -g jslint
+$ jslint <file>
+
+TIDY
+$ yum install php-tidy // this puts down the lib and php-tidy
+$ wget ftp://rpmfind.net/linux/centos/6.5/os/x86_64/Packages/tidy-0.99.0-19.20070615.1.el6.x86_64.rpm
+$ rpm -Uvh tidy-0.99.0-19.20070615.1.el6.x86_64.rpm
+$ tidy -o <output> -f <errorfile> -c <input html file>
+http://webstyle.soslug.org/content/linux-html-tidy
+
 
 DB STUFF:
 $ yum install redis

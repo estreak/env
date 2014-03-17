@@ -1,16 +1,22 @@
 #!/bin/bash
+
+extensions="*.[c|h|l|y|i|py|js|ejs]*";
+grepopts="-n -H";
+
 if [ -z "$1" ]; then
-    echo usage: $0 [egrep options: -i -C n] string
-exit
+  echo "usage: $0 [egrep options: -i -C n] string";
+  exit;
 fi
-find -L /dev/null > /dev/null
-if [ "$?" -eq 0 ] ; then
-    l="-L"
-fi
+
+# check for -L support
+find -L /dev/null > /dev/null;
+if [ "$?" -eq 0 ] ; then l="-L"; fi
+
+
+searchstr="$1";
 if [ "$2" !=  "" ]; then
-echo "searching for $2 ... (grep $1)";
-find $l . -name "*.[c|h|l|y|i|py|js]*" -exec egrep $1 -n -H "$2" {} \; 2>/dev/null
-else
-echo "searching for $1 ...";
-find $l . -name "*.[c|h|l|y|i|py|js]*" -exec egrep -n -H "$1" {} \; 2>/dev/null
+  grepopts="$grepopts $1";
+  searchstr="$2";
 fi
+echo "searching for '$searchstr' ... (grep $grepopts)";
+find $l . -name "$extensions" -exec egrep $grepopts "$searchstr" {} \; 2>/dev/null;

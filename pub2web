@@ -1,0 +1,16 @@
+if [ -z "$1" ] ; then echo "usage:$0 <name>"; exit 1; fi
+app=$1
+rootdir="/var/www/html"
+pubdir="${rootdir}/${app}"
+archive="${app}.tgz"
+
+echo "archiving to ${archive}..."
+rm -f $archive
+find . | egrep -v ".git|*.swp$" | tar czvf $archive --files-from -
+echo "untar in ${pubdir}..."
+sudo rm -rf $pubdir
+sudo mkdir -p $pubdir
+sudo cp $archive $pubdir
+cd $pubdir
+sudo tar xzvf $archive
+echo ok!
