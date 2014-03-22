@@ -41,6 +41,13 @@ wget http://code.jquery.com/jquery-1.11.0.js
 URIANCHOR:
 git clone https://github.com/mmikowski/urianchor.git
 
+JQUERY.EVENT.UE
+git clone https://github.com/mmikowski/jquery.event.ue.git
+(might've crashed chrome)
+
+JQUERY.GLOBAL.EVENT
+git clone https://github.com/mmikowski/jquery.event.gevent.git
+
 JSLINT
 https://github.com/reid/node-jslint
 $ npm install -g jslint
@@ -53,6 +60,8 @@ $ rpm -Uvh tidy-0.99.0-19.20070615.1.el6.x86_64.rpm
 $ tidy -o <output> -f <errorfile> -c <input html file>
 http://webstyle.soslug.org/content/linux-html-tidy
 
+BOOTSTRAP:
+wget https://github.com/twbs/bootstrap/releases/download/v3.1.1/bootstrap-3.1.1-dist.zip
 
 DB STUFF:
 $ yum install redis

@@ -6,7 +6,7 @@ archive="${app}.tgz"
 
 echo "archiving to ${archive}..."
 rm -f $archive
-find . | egrep -v ".git|*.swp$" | tar czvf $archive --files-from -
+find . -type f | egrep -v ".git|*.swp$" | tar czvf $archive --files-from -
 echo "untar in ${pubdir}..."
 sudo rm -rf $pubdir
 sudo mkdir -p $pubdir
