@@ -124,10 +124,19 @@ $ node --debug hello.js
 NGINX+PHP:
 
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-centos-6
+
 (su)
+vi /etc/yum.repos.d/nginx.repo
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=0
+enabled=1
+
 $ yum install nginx
 $ vi /etc/nginx/nginx.conf 
     - bump up #workers
+    - in http: server_names_hash_bucket_size 64;
 $ vi /etc/nginx/conf.d/default.conf
     - add index.php to location
     - add .php$ with FastCGI
@@ -148,6 +157,28 @@ $ service nginx restart
 $ vi /usr/share/nginx/html/info.php
 <?php phpinfo(); ?>
 $ curl <ip>/info.php
+
+$ vi /etc/nginx/conf.d/virtual.conf
+server {
+    listen       3001;
+    server_name  estreak.com;
+
+    location / {
+        root   /usr/share/nginx/html/julianapope.com/;
+        index  index.php index.html index.htm;
+    }
+    # proxy the PHP scripts to FastCGI listening on 127.0.0.1:9000
+    #
+    location ~ \.php$ {
+        root           /usr/share/nginx/html/julianapope.com;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
+
+
 
 MAP 80 TO A PORT:
 http://stackoverflow.com/questions/16573668/best-practices-when-running-node-js-with-port-80-ubuntu-linode
